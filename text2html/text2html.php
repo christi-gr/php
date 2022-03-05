@@ -1,4 +1,11 @@
 <?php
+	/*
+		Read CSV file and convert description from plain text to html,
+		with p tag and list item(string start with *),
+		result as output.csv file.
+		For run script from CLI:
+			php text2html.php
+	*/
 	function text_to_html( $plain_text ) {
 	    $html = '<p>' . implode('</p>' . "\n" . '<p>', preg_split('/\R+/', $plain_text)) . '</p>';
 	    $html = preg_replace('/\<p\>\*([^<\*]*)\<\/p\>/', '<li>${1}</li>', $html);
